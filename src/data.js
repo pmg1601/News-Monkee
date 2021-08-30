@@ -1,0 +1,282 @@
+const articles = [
+    {
+        source: { id: null, name: 'India.com' },
+        author: 'Zee Media Bureau',
+        title: 'LIVE: President Ram Nath Kovind inaugurates Ramayana Conclave in Ayodhya - Zee News',
+        description:
+            'LIVE: President Ram Nath Kovind inaugurates Ramayana Conclave in Ayodhya',
+        url: 'https://zeenews.india.com/india/live-updates/breaking-latest-live-news-updates-covid-19-coronavirus-narendra-modi-mann-ki-baat-afghanistan-taliban-united-states-monsoon-imd-rainfall-2389371',
+        urlToImage:
+            'https://english.cdn.zeenews.com/sites/default/files/2021/08/29/965581-untitled-design-2021-08-29t140436.385.jpg',
+        publishedAt: '2021-08-29T10:21:57Z',
+        content:
+            '29 August 2021, 15:51 PM\r\nAyodhya: President Ram Nath Kovind and his family members Sunday offered prayers to Ram Lalla at a makeshift temple in Ayodhya. The president also planted a sapling and was … [+16432 chars]'
+    },
+    {
+        source: { id: null, name: 'EastMojo' },
+        author: null,
+        title: 'How parents can be emotion coaches’ as kids navigate back-to-school during COVID-19 - EastMojo',
+        description:
+            'By Dillon Thomas Browne, University of Waterloo; Heather Prime, York University, Canada; Jennifer Jenkins and Mark Wade, University of Toronto',
+        url: 'https://www.eastmojo.com/coronavirus-updates/2021/08/29/how-parents-can-be-emotion-coaches-as-kids-navigate-back-to-school-during-covid-19/',
+        urlToImage:
+            'https://www.eastmojo.com/wp-content/uploads/2021/08/Back-to-school.jpeg',
+        publishedAt: '2021-08-29T09:10:15Z',
+        content:
+            'By Dillon Thomas Browne, University of Waterloo; Heather Prime, York University, Canada; Jennifer Jenkins and Mark Wade, University of Toronto\r\nWaterloo/Toronto (Canada), Aug 29: (The Conversation) A… [+5693 chars]'
+    },
+    {
+        source: { id: null, name: 'The Indian Express' },
+        author: 'AP',
+        title: 'SpaceX launches ants, avocados, robot to space station - The Indian Express',
+        description:
+            'NASA turned to SpaceX and other US companies to deliver cargo and crews to the space station, once the space shuttle program ended in 2011.',
+        url: 'https://indianexpress.com/article/technology/science/spacex-launches-ants-avocados-robot-to-space-station-7476546/',
+        urlToImage:
+            'https://images.indianexpress.com/2021/08/SpaceX-Edited.jpg',
+        publishedAt: '2021-08-29T08:22:10Z',
+        content:
+            'A SpaceX shipment of ants, avocados and a human-sized robotic arm rocketed toward the International Space Station on Sunday. The delivery, due to arrive Monday, is the company’s 23rd for NASA in just… [+1931 chars]'
+    },
+    {
+        source: { id: null, name: 'Hindustan Times' },
+        author: 'hindustantimes.com',
+        title: 'Covid-19: Suspension of international flights extended till September 30 - Hindustan Times',
+        description:
+            'Cargo operations and flights on certain routes allowed by the DGCA have been kept outside the purview of the restrictions. | Latest News India',
+        url: 'https://www.hindustantimes.com/india-news/covid19-suspension-of-international-flights-extended-till-september-30-101630217817847.html',
+        urlToImage:
+            'https://images.hindustantimes.com/img/2021/08/29/1600x900/Covid-19_international_flights_suspension_1630218572315_1630218572532.jpg',
+        publishedAt: '2021-08-29T08:04:55Z',
+        content:
+            'The Centre on Sunday extended the suspension on international scheduled commercial flights till September 30 owing to the coronavirus diseases (Covid-19) pandemic.\r\nThe latest circular issued by the … [+1306 chars]'
+    },
+    {
+        source: { id: null, name: 'Hindustan Times' },
+        author: 'HT Tech',
+        title: 'Samsung will soon delete these users’ photos from Samsung Cloud, check deadline and how to download your data - HT Tech',
+        description:
+            'Samsung is once again reminding users that they must save their photos from Samsung Cloud before they are permanently deleted once the company shuts down its photo backup feature.',
+        url: 'https://tech.hindustantimes.com/tech/news/samsung-will-soon-delete-these-users-photos-from-samsung-cloud-check-deadline-and-how-to-download-your-data-71630223682281.html',
+        urlToImage:
+            'https://images.hindustantimes.com/tech/img/2021/08/29/1600x900/Screenshot_2021-08-29_132747_1630223919951_1630223945437.png',
+        publishedAt: '2021-08-29T07:54:41Z',
+        content:
+            'Samsung users around the world are seeing a warning from the manufacturer, asking them to save all of their photos from Samsung Cloud. As the company winds down its image backup service that is curre… [+1964 chars]'
+    },
+    {
+        source: { id: null, name: 'The Indian Express' },
+        author: 'PTI',
+        title: 'Chidambaram slams ICHR for omitting Nehru’s photo from poster celebrating India’s Independence - The Indian Express',
+        description:
+            "The exclusion of Nehru's image from the poster of the 'Azaadi ka Amrit Mahotsav' celebrations by the ICHR has triggered a controversy with opposition parties slamming the government for it.",
+        url: 'https://indianexpress.com/article/india/chidambaram-ichr-omitting-nehru-poster-independence-7476477/',
+        urlToImage:
+            'https://images.indianexpress.com/2021/08/Chidambaram-2.jpg',
+        publishedAt: '2021-08-29T07:47:23Z',
+        content:
+            'Congress leader P Chidambaram on Sunday hit out at the ICHR for omitting the photograph of Jawaharlal Nehru from the first digital poster to celebrate the 75th year of India’s Independence, and said … [+1212 chars]'
+    },
+    {
+        source: {
+            id: 'the-times-of-india',
+            name: 'The Times of India'
+        },
+        author: 'Peter Baker',
+        title: 'All in or All out? Joe Biden saw no middle ground in Afghanistan - Times of India',
+        description:
+            'US News: As the US military withdrawal from Afghanistan capping an ill-fated 20-year war has turned uglier and deadlier in recent days, President Joe Biden has',
+        url: 'https://timesofindia.indiatimes.com/world/us/all-in-or-all-out-joe-biden-saw-no-middle-ground-in-afghanistan/articleshow/85733803.cms',
+        urlToImage:
+            'https://static.toiimg.com/thumb/msid-85734220,width-1070,height-580,imgsize-286902,resizemode-75,overlay-toi_sw,pt-32,y_pad-40/photo.jpg',
+        publishedAt: '2021-08-29T07:31:00Z',
+        content:
+            "Taliban rule won't last long in Afghanistan, says Amrullah SalehThe former Afghan government first Vice President and self-proclaimed acting President Amrullah Saleh on Saturday told that the Taliban… [+154 chars]"
+    },
+    {
+        source: { id: null, name: 'The Indian Express' },
+        author: 'Entertainment Desk',
+        title: 'When Randhir Kapoor said he ‘worked really hard’ to pay for Kareena Kapoor’s school fees and his scotch - The Indian Express',
+        description:
+            "In a throwback interview, Randhir Kapoor said today's actors aren't dependent only on films for money as they have other avenues like advertisements and events.",
+        url: 'https://indianexpress.com/article/entertainment/bollywood/when-randhir-kapoor-said-he-worked-really-hard-to-pay-for-kareena-kapoors-school-fees-and-his-scotch-7476405/',
+        urlToImage:
+            'https://images.indianexpress.com/2021/08/randhir-kareena-1200.jpg',
+        publishedAt: '2021-08-29T07:20:24Z',
+        content:
+            'Kareena Kapoor Khan and sister Karisma Kapoor’s social media posts are proof how much they dote on their father, Randhir Kapoor, and how much they value the upbringing he gave them. In a throwback in… [+1282 chars]'
+    },
+    {
+        source: {
+            id: 'the-times-of-india',
+            name: 'The Times of India'
+        },
+        author: 'AFP',
+        title: 'UAE to open up travel to all vaccinated people from Monday - Economic Times',
+        description:
+            'The move comes amid a drop in coronavirus infections in the oil-rich Gulf country, after it reported less than 1,000 cases per day last week for the first time in months.',
+        url: 'https://economictimes.indiatimes.com/nri/visit/uae-to-openup-travel-to-all-vaccinated-people-from-monday/articleshow/85733689.cms',
+        urlToImage:
+            'https://img.etimg.com/thumb/msid-85733698,width-1070,height-580,imgsize-74998,overlay-economictimes/photo.jpg',
+        publishedAt: '2021-08-29T07:13:00Z',
+        content:
+            'The United Arab Emirates announced it will resume issuing visas to all tourists fully vaccinated against Covid from Monday, a month before Dubai hosts the delayed Expo 2020 trade fair.\r\nThe move come… [+1616 chars]'
+    },
+    {
+        source: { id: null, name: 'The Indian Express' },
+        author: 'Express Web Desk',
+        title: '‘India-Pak ceasefire only successful because of our strength,’ says Rajnath Singh - The Indian Express',
+        description:
+            'Addressing the recent crisis in Afghanistan, where the Taliban have returned to power, he said that India will be changing its strategy on Afghanistan. “We are changing our strategy and the QUAD formation is part of the same strategy,” he added.',
+        url: 'https://indianexpress.com/article/india/india-pak-ceasefire-only-successful-because-of-our-strength-says-rajnath-singh-7476438/',
+        urlToImage:
+            'https://images.indianexpress.com/2021/08/rajnath-singh.jpg',
+        publishedAt: '2021-08-29T07:03:05Z',
+        content:
+            'Pointedly referring to Pakistan as Indias neighbour, without explicitly naming the country, Union Defence Minister Rajnath Singh on Sunday said that the ceasefire between the two countries is success… [+1882 chars]'
+    },
+    {
+        source: { id: null, name: 'Livemint' },
+        author: 'Livemint',
+        title: 'Apple iPhone 12, iPhone 12 Pro audio problem to be fixed for free. Details here - Mint',
+        description:
+            'Apple has announced that the repair will be free of charge, and the problem doesn’t affect the iPhone 12 mini and iPhone 12 Pro Max',
+        url: 'https://www.livemint.com/technology/gadgets/apple-iphone-12-iphone-12-pro-audio-problem-to-be-fixed-for-free-details-here-11630218530259.html',
+        urlToImage:
+            'https://images.livemint.com/img/2021/08/29/600x338/2021-07-21T093912Z_1927589391_RC2XOO9L6AM9_RTRMADP_3_APPLE-IPHONE_1630220241949_1630220259949.JPG',
+        publishedAt: '2021-08-29T07:00:16Z',
+        content:
+            'Apple has acknowledged that some iPhone 12 and iPhone 12 Pro devices have been facing problems with their audio. The company has announced that it is willing to repair the affected products. \r\nAccord… [+932 chars]'
+    },
+    {
+        source: {
+            id: 'al-jazeera-english',
+            name: 'Al Jazeera English'
+        },
+        author: 'Bilal Kuchay',
+        title: 'Taliban takeover a ‘body blow’ to Indian interests in Afghanistan - Al Jazeera English',
+        description:
+            'Analysts say Taliban’s takeover is a major setback for India, which cultivated close ties with the outgoing government.',
+        url: 'https://www.aljazeera.com/news/2021/8/29/what-does-the-talibans-takeover-of-afghanistan-mean-for-india',
+        urlToImage:
+            'https://www.aljazeera.com/wp-content/uploads/2021/08/Indianflag.jpg?fit=1000%2C562',
+        publishedAt: '2021-08-29T06:48:19Z',
+        content:
+            'The Talibans return to power two weeks ago has caused a major diplomatic setback for India, with the South Asian giant now one of the regions most disadvantaged players, analysts say.\r\nWithin weeks, … [+5776 chars]'
+    },
+    {
+        source: { id: null, name: 'NDTV News' },
+        author: null,
+        title: '"Breaks My Heart": Grofers Founder On "Hate" Over "10-Minute Delivery" - NDTV',
+        description:
+            'The founder of online grocery startup Grofers, facing heat over the company\'s promise to deliver groceries in 10 minutes, has clarified that the presence of its stores in densely located areas and its "good" in-store planning and tech that ensures mo',
+        url: 'https://www.ndtv.com/india-news/grofers-founder-albinder-dhindsa-facing-criticism-over-10-minute-delivery-call-says-breaks-my-heart-2522487',
+        urlToImage:
+            'https://c.ndtvimg.com/2021-08/se1u28lo_grofers-founder-albinder-dhindsa-_625x300_29_August_21.jpg',
+        publishedAt: '2021-08-29T05:53:21Z',
+        content:
+            'Albinder Dhindsa also said that it "breaks my heart" to see the "hate" around his comments.\r\nNew Delhi: The founder of online grocery startup Grofers, facing heat over the company\'s promise to delive… [+2879 chars]'
+    },
+    {
+        source: { id: null, name: 'News18' },
+        author: 'Tech Desk',
+        title: 'Vivo X70 Series Renders, Full Specs Leaked Ahead of Expected September Launch - News18',
+        description:
+            'Vivo will reportedly launch the Vivo X70 series in India in September - in just six months after launching the Vivo X60 series in the country and less than a year after introducing it in China (December 2020).',
+        url: 'https://www.news18.com/news/tech/vivo-x70-series-renders-full-specs-leaked-ahead-of-expected-september-launch-4140530.html',
+        urlToImage:
+            'https://images.news18.com/ibnlive/uploads/2021/08/vivo_x70series-163021444516x9.jpg',
+        publishedAt: '2021-08-29T05:21:10Z',
+        content:
+            'Vivo will reportedly launch the Vivo X70 series in India in September - in just six months after launching the Vivo X60 series in the country and less than a year after introducing it in China (Decem… [+2975 chars]'
+    },
+    {
+        source: {
+            id: 'the-times-of-india',
+            name: 'The Times of India'
+        },
+        author: 'ANI',
+        title: "Taliban rule won't last long in Afghanistan, says Amrullah Saleh - Times of India",
+        description:
+            "South Asia News: The former Afghan government first Vice President and self-proclaimed acting President Amrullah Saleh on Saturday told that the Taliban rule won't las",
+        url: 'https://timesofindia.indiatimes.com/world/south-asia/taliban-rule-wont-last-long-in-afghanistan-says-amrullah-saleh/articleshow/85731932.cms',
+        urlToImage:
+            'https://static.toiimg.com/thumb/msid-85731946,width-1070,height-580,imgsize-25042,resizemode-75,overlay-toi_sw,pt-32,y_pad-40/photo.jpg',
+        publishedAt: '2021-08-29T05:12:00Z',
+        content:
+            "Taliban rule won't last long in Afghanistan, says Amrullah Saleh"
+    },
+    {
+        source: {
+            id: 'the-times-of-india',
+            name: 'The Times of India'
+        },
+        author: 'ANI',
+        title: 'Armaan Kohli drug case: NCB to present Bollywood actor before court today - Times of India',
+        description:
+            'The Narcotics Control Bureau (NCB) on Saturday detained Bollywood actor Armaan Kohli following a raid at his Juhu r',
+        url: 'https://timesofindia.indiatimes.com/entertainment/hindi/bollywood/news/armaan-kohli-drug-case-ncb-to-present-bollywood-actor-before-court-today/articleshow/85731807.cms',
+        urlToImage:
+            'https://static.toiimg.com/thumb/msid-85731884,width-1070,height-580,overlay-toi_sw,pt-32,y_pad-40,resizemode-75,imgsize-29358/85731884.jpg',
+        publishedAt: '2021-08-29T04:57:00Z',
+        content:
+            'The Narcotics Control Bureau (NCB) on Saturday detained Bollywood actor Armaan Kohli following a raid at his Juhu residence, where they recovered some quantity of cocaine. According to the latest rep… [+1259 chars]'
+    },
+    {
+        source: { id: null, name: 'Livemint' },
+        author: 'Livemint',
+        title: 'IPOs this week: Vijaya Diagnostic Centre, Ami Organics will open for subscription. Key details here - Mint',
+        description:
+            'Vijaya Diagnostic Centre, Ami Organics will launch their initial public offerings (IPOs) on September 1',
+        url: 'https://www.livemint.com/market/ipo/ipos-this-week-vijaya-diagnostic-centre-ami-organics-open-for-subscription-key-details-here-11630058609772.html',
+        urlToImage:
+            'https://images.livemint.com/img/2021/08/27/600x338/IPOs-km0--621x414@LiveMint_1630059139882.jpg',
+        publishedAt: '2021-08-29T04:37:34Z',
+        content:
+            'Two companies are set to launch their initial public offerings (IPOs) on the first day of September. Healthcare chain Vijaya Diagnostic centre and specialty chemical manufacturer Ami Organics public … [+2308 chars]'
+    },
+    {
+        source: { id: null, name: 'Gadgets Now' },
+        author: 'Gadgets Now Bureau',
+        title: 'New drone rules, Covid-19 vaccine booking on WhatsApp, new launches from Samsung, Amazon, Xiaomi and more - Gadgets Now',
+        description:
+            'This week in the tech world saw many new launches from Samsung, Xiaomi, HP, Dell and Amazon. Samsung announced the India price of its new Galaxy Watch 4 series and Galaxy Buds 2. The company also introduced the 5G model of its Galaxy M32 phone. Xiaomi hosted …',
+        url: 'https://www.gadgetsnow.com/slideshows/new-drone-rules-covid-19-vaccine-booking-on-whatsapp-new-launches-from-samsung-amazon-xiaomi-and-more/photolist/85721278.cms',
+        urlToImage:
+            'https://static.toiimg.com/thumb/msid-85721326,width-800,resizemode-4,imgsize-244928/share.jpg',
+        publishedAt: '2021-08-29T04:26:00Z',
+        content:
+            'Samsung has announced prices of Galaxy Watch 4, Galaxy Watch 4 Classic and Galaxy Buds 2 in India. Samsung Galaxy Watch 4 carries a price tag of Rs 23,999 onwards, while the Galaxy Watch 4 Classic co… [+361 chars]'
+    },
+    {
+        source: {
+            id: 'the-times-of-india',
+            name: 'The Times of India'
+        },
+        author: 'Ehtesham Hasan',
+        title: 'India vs England: Virat Kohli dismisses idea of playing extra batsman - Times of India',
+        description:
+            'Cricket News: For a team that collapsed like a house of cards twice in four days, Virat Kohli’s promise to not buttress the batting by playing an additional batsman',
+        url: 'https://timesofindia.indiatimes.com/sports/cricket/india-in-england/india-vs-england-virat-kohli-dismisses-idea-of-playing-extra-batsman/articleshow/85731126.cms',
+        urlToImage:
+            'https://static.toiimg.com/thumb/msid-85731177,width-1070,height-580,imgsize-69526,resizemode-75,overlay-toi_sw,pt-32,y_pad-40/photo.jpg',
+        publishedAt: '2021-08-29T03:57:00Z',
+        content:
+            'India vs England: Virat Kohli dismisses idea of playing extra batsman'
+    },
+    {
+        source: { id: null, name: 'Medical Dialogues' },
+        author: 'MD Bureau',
+        title: 'Australia approves COVID vaccines for 12 years and above - Medical Dialogues',
+        description:
+            'Canberra: Amid the third wave of the pandemic, Australia on Friday approved vaccination against...',
+        url: 'https://medicaldialogues.in/news/industry/pharma/australia-approves-covid-vaccines-for-12-years-and-above-81359',
+        urlToImage:
+            'https://medicaldialogues.in/h-upload/2020/12/09/143700-coronavirus-vaccine.jpg',
+        publishedAt: '2021-08-29T03:30:36Z',
+        content:
+            'Canberra: Amid the third wave of the pandemic, Australia on Friday approved vaccination against Covid-19 for all individuals from 12 years of age, extending the current recommendation for those aged … [+1509 chars]'
+    }
+]
+
+export default articles
