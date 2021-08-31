@@ -10,10 +10,10 @@ export default class LandingPage extends Component {
     render() {
         return (
             <div
-                className='d-flex flex-column justify-content-center align-items-center'
+                className='d-flex text-center flex-column justify-content-center align-items-center'
                 style={{
-                    width: '91vw',
-                    height: '92vh'
+                    width: 'auto',
+                    height: '83vh'
                 }}>
                 <h1 className='my-4'>Welcome to News Monkee!</h1>
                 <p className='text-muted'>

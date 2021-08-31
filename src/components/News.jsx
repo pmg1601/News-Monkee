@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 // import articles from '../data'
@@ -8,166 +8,146 @@ import Spinner from './Spinner'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 /* -------------------------------------------------------------------------- */
-export default class News extends Component {
-    // Default Props
-    static defaultProps = {
-        country: 'in',
-        pageSize: 9,
-        category: 'general'
-    }
-
-    // Prop Types
-    static propsTypes = {
-        country: PropTypes.string,
-        pageSize: PropTypes.number,
-        category: PropTypes.string
-    }
-
-    // Constructor
-    constructor(props) {
-        super(props) // Mandatory
-
-        this.state = {
-            articles: [],
-            loading: true,
-            page: 1,
-            totalResults: 0
-        }
-
-        document.title = `News Monkee | ${this.props.title}`
-    }
+const News = (props) => {
+    const [articles, setArticles] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [page, setPage] = useState(1)
+    const [totalResults, setTotalResults] = useState(0)
 
     // Updated news page for - next, prev, at start
-    async updateNews() {
-        const URL = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=3fd2dfd5b9cf42b287f86cd58cd34cfa&page=${this.state.page}&pageSize=${this.props.pageSize}`
+    async function updateNews() {
+        props.setProgress(10)
 
-        this.setState({
-            loading: true
-        })
+        const URL = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=3fd2dfd5b9cf42b287f86cd58cd34cfa&page=${page}&pageSize=${props.pageSize}`
+
+        setLoading(true)
 
         try {
             const data = await fetch(URL)
-            const parsedData = await data.json()
+            props.setProgress(30)
 
-            this.setState({
-                articles: parsedData.articles,
-                loading: false,
-                totalResults: parsedData.totalResults
-            })
+            const parsedData = await data.json()
+            props.setProgress(70)
+
+            setArticles(parsedData.articles)
+            setTotalResults(parsedData.totalResults)
+            setLoading(false)
+
+            props.setProgress(100)
         } catch (err) {
-            this.setState({
-                articles: [],
-                loading: false,
-                totalResults: 0
-            })
+            setArticles([])
+            setTotalResults(0)
+            setLoading(false)
         }
     }
 
     // Runs after render method - Mount at start
-    async componentDidMount() {
-        await this.updateNews()
-    }
+    useEffect(() => {
+        document.title = `News Monkee | ${props.title}`
+        updateNews()
+        // eslint-disable-next-line
+    }, [])
 
     // Fetch data for infinite scroll
-    fetchMoreData = async () => {
+    const fetchMoreData = async () => {
         const URL = `https://newsapi.org/v2/top-headlines?country=${
-            this.props.country
+            props.country
         }&category=${
-            this.props.category
-        }&apiKey=3fd2dfd5b9cf42b287f86cd58cd34cfa&page=${
-            this.state.page + 1
-        }&pageSize=${this.props.pageSize}`
+            props.category
+        }&apiKey=3fd2dfd5b9cf42b287f86cd58cd34cfa&page=${page + 1}&pageSize=${
+            props.pageSize
+        }`
 
-        this.setState({ page: this.state.page + 1 })
+        setPage(page + 1)
 
         try {
             const data = await fetch(URL)
             const parsedData = await data.json()
 
-            this.setState({
-                articles: this.state.articles.concat(parsedData.articles),
-                totalResults: parsedData.totalResults
-            })
+            setArticles(articles.concat(parsedData.articles))
+            setTotalResults(parsedData.totalResults)
         } catch (err) {
-            this.setState({
-                articles: [],
-                totalResults: 0
-            })
+            setArticles([])
+            setTotalResults(0)
         }
     }
 
     /* -------------------------------------------------------------------------- */
 
-    render() {
-        return (
-            <div className='my-4'>
-                <h1>
-                    Top Headlines{' '}
-                    {this.props.title &&
-                        this.props.title !== 'Home' &&
-                        ` - ${this.props.title}`}
-                </h1>
+    return (
+        <div className='my-5'>
+            <h1 className='text-center'>
+                Top Headlines{' '}
+                {props.title && props.title !== 'Home' && ` - ${props.title}`}
+            </h1>
 
-                {this.state.loading && <Spinner />}
+            <InfiniteScroll
+                dataLength={articles.length}
+                next={fetchMoreData}
+                hasMore={articles.length !== totalResults}
+                loader={<Spinner />}>
+                <div className='row container'>
+                    {articles ? (
+                        // News Item Component
+                        <Fragment>
+                            {articles.map((article) => (
+                                <div
+                                    key={article.url}
+                                    className='col-sm-6 col-md-6 col-lg-4'>
+                                    <NewsItem
+                                        title={
+                                            article.title
+                                                ? article.title.slice(0, 80) +
+                                                  '...'
+                                                : 'No Title'
+                                        }
+                                        desc={
+                                            article.description
+                                                ? article.description.slice(
+                                                      0,
+                                                      80
+                                                  ) + '...'
+                                                : 'No Description'
+                                        }
+                                        imgurl={
+                                            article.urlToImage
+                                                ? article.urlToImage
+                                                : image
+                                        }
+                                        newsurl={article.url}
+                                        author={article.author}
+                                        date={article.publishedAt}
+                                        source={article.source.name}
+                                    />
+                                </div>
+                            ))}
 
-                <InfiniteScroll
-                    dataLength={this.state.articles.length}
-                    next={this.fetchMoreData}
-                    hasMore={
-                        this.state.articles.length !== this.state.totalResults
-                    }
-                    loader={<Spinner />}>
-                    <div className='row container'>
-                        {this.state.articles ? (
-                            // News Item Component
-                            <Fragment>
-                                {this.state.articles.map((article) => (
-                                    <div
-                                        key={article.url}
-                                        className='col-sm-6 col-md-6 col-lg-4'>
-                                        <NewsItem
-                                            title={
-                                                article.title
-                                                    ? article.title.slice(
-                                                          0,
-                                                          60
-                                                      ) + '...'
-                                                    : 'No Title'
-                                            }
-                                            desc={
-                                                article.description
-                                                    ? article.description.slice(
-                                                          0,
-                                                          80
-                                                      ) + '...'
-                                                    : 'No Description'
-                                            }
-                                            imgurl={
-                                                article.urlToImage
-                                                    ? article.urlToImage
-                                                    : image
-                                            }
-                                            newsurl={article.url}
-                                            author={article.author}
-                                            date={article.publishedAt}
-                                            source={article.source.name}
-                                        />
-                                    </div>
-                                ))}
-
-                                {/* Next-Previous Buttons */}
-                                {/* Removed! */}
-                            </Fragment>
-                        ) : (
-                            !this.state.loading && (
-                                <h3 className='mt-5'>
-                                    "No News, Go corona Go!"
-                                </h3>
-                            )
-                        )}
-                    </div>
-                </InfiniteScroll>
-            </div>
-        )
-    }
+                            {/* Next-Previous Buttons */}
+                            {/* Removed! */}
+                        </Fragment>
+                    ) : (
+                        !loading && (
+                            <h3 className='mt-5'>"No News, Go corona Go!"</h3>
+                        )
+                    )}
+                </div>
+            </InfiniteScroll>
+        </div>
+    )
 }
+
+// Default Props
+News.defaultProps = {
+    country: 'in',
+    pageSize: 9,
+    category: 'general'
+}
+
+// Prop Types
+News.propsTypes = {
+    country: PropTypes.string,
+    pageSize: PropTypes.number,
+    category: PropTypes.string
+}
+
+export default News
